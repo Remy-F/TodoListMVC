@@ -12,5 +12,7 @@ public partial class TodoList
 
     public string? Couleur { get; set; }
 
+    public string UserName { get; set; } = UsernameState.Username;
+
     public virtual ICollection<TodoItem> TodoItems { get; } = new List<TodoItem>();
 }
