@@ -3,6 +3,8 @@ using TodoListMVC;
 
 var builder = WebApplication.CreateBuilder(args);
 
+UsernameState.Username = builder.Configuration["name"];
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

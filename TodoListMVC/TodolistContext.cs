@@ -28,6 +28,8 @@ public partial class TodolistContext : DbContext
 
             entity.ToTable("TodoItem");
 
+            entity.HasQueryFilter(i => i.IdTodoListNavigation.UserName == UsernameState.Username);
+
             entity.HasOne(d => d.IdTodoListNavigation).WithMany(p => p.TodoItems)
                 .HasForeignKey(d => d.IdTodoList)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -39,6 +41,8 @@ public partial class TodolistContext : DbContext
             entity.HasKey(e => e.IdTodoList).HasName("PK__TodoList__AC732DF36B42C48E");
 
             entity.ToTable("TodoList");
+
+            entity.HasQueryFilter(i => i.UserName ==UsernameState.Username);
         });
 
         OnModelCreatingPartial(modelBuilder);
